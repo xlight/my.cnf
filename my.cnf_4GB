@@ -39,10 +39,9 @@ log_error			= mysql-error.err
 log_warnings
 log_bin				= mysql-bin
 slow_query_log = 1
-long_query_time = 1
 log_slow_queries		= mysql-slow.log
 #log_queries_not_using_indexes
-long_query_time 		= 10	#default: 10
+long_query_time 		= 1	#default: 10
 max_binlog_size 		= 256M	#max size for binlog before rolling
 expire_logs_days 		= 4	#binlog files older than this will be purged
 
@@ -137,9 +136,9 @@ innodb_write_io_threads 	= 4
 innodb_read_io_threads		= 8
 
 ## InnoDB Plugin Independent Settings
-innodb_data_home_dir            = /var/lib/mysql
-innodb_data_file_path		= ibdata1:128M;ibdata2:10M:autoextend
-innodb_log_file_size		= 128M	#64G_RAM+ = 768, 24G_RAM+ = 512, 8G_RAM+ = 256, 2G_RAM+ = 128 
+#innodb_data_home_dir            = /var/lib/mysql
+#innodb_data_file_path		= ibdata1:128M;ibdata2:10M:autoextend
+#innodb_log_file_size		= 128M	#64G_RAM+ = 768, 24G_RAM+ = 512, 8G_RAM+ = 256, 2G_RAM+ = 128 
 innodb_log_files_in_group	= 4	#combined size of all logs <4GB. <2G_RAM = 2, >2G_RAM = 4
 innodb_buffer_pool_size		= 2G 	#global buffer
 innodb_additional_mem_pool_size	= 4M	#global buffer
@@ -153,11 +152,11 @@ innodb_thread_concurrency	= 4	#recommend 2x core quantity
 innodb_commit_concurrency	= 8	#recommend 4x num disks
 innodb_flush_method		= O_DIRECT	   #O_DIRECT = local/DAS, O_DSYNC = SAN/iSCSI
 innodb_support_xa		= 0		   #recommend 0, disable xa to negate extra disk flush
-skip-innodb-doublewrite
+#skip-innodb-doublewrite
 
 ## for SSD
-innodb_page_size = 4k
-Innodb_flush_neighbors = 0
+#innodb_page_size = 4k
+#Innodb_flush_neighbors = 0
 
 ## Binlog sync settings
 ## XA transactions = 1, otherwise set to 0 for best performance
